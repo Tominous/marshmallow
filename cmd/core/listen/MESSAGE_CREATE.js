@@ -1,5 +1,3 @@
-let config = require('../../../config.json')
-
 let debugE = global.debug.error
 let debug = global.debug.listen
 
@@ -19,7 +17,7 @@ exports.begin = () => {
             global.db.check('prefix', {
                 main: (c.message.guild ? c.message.guild.id : 0)
             }).then((r) => {
-                prefix = (r.value ? r.value : config.prefix)
+                prefix = (r.value ? r.value : global.config.prefix)
                 if (c.message.content.indexOf(prefix) === 0) {
                     cmd = c.message.content.substr(prefix.length).split(' ')[0].toLowerCase()
                     suffix = c.message.content.substr(prefix.length).split(' ')

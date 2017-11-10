@@ -13,7 +13,6 @@ let temp
 let DL = require('ytdl-core')
 let YT = require('youtube-dl')
 let fs = require('fs')
-let Config = require('../config.json')
 let debug = global.debug.voice
 let debugE = global.debug.error
 
@@ -56,7 +55,7 @@ exports.join = function (msg, suffix, bot) {
             let VC = msg.member.getVoiceChannel()
             if (VC) {
                 VC.join().then((vc) => {
-                    let prefix = Config.prefix
+                    let prefix = global.config.prefix
                     require('./db').check('prefix', {
                         main: msg.guild.id
                     }).then((r) => {
@@ -67,7 +66,7 @@ exports.join = function (msg, suffix, bot) {
                                 msg.channel.sendMessage(':warning: You had an instance last time, sorry for the unexpected leave.')
                             }
                         })
-                        if (r !== false) prefix = r.value || Config.prefix
+                        if (r !== false) prefix = r.value || global.config.prefix
                         let joinmsg = []
                         joinmsg.push({name: 'Hello!', value: `I joined ${vc.voiceConnection.channel.name}`})
                         joinmsg.push({name: `${prefix}request`, value: `Search or Give a URL and add it to playlist.`, inline: true})
@@ -99,7 +98,7 @@ exports.join = function (msg, suffix, bot) {
                 })
             } else if (!VC) {
                 msg.guild.voiceChannels[0].join().then((vc) => {
-                    let prefix = Config.prefix
+                    let prefix = global.config.prefix
                     require('./db').check('prefix', {
                         main: msg.guild.id
                     }).then((r) => {
@@ -110,7 +109,7 @@ exports.join = function (msg, suffix, bot) {
                                 msg.channel.sendMessage(':warning: You had an instance last time, sorry for the unexpected leave.')
                             }
                         })
-                        if (r !== false) prefix = r.value || Config.prefix
+                        if (r !== false) prefix = r.value || global.config.prefix
                         let joinmsg = []
                         joinmsg.push({name: 'Hello!', value: `I joined ${vc.voiceConnection.channel.name}`})
                         joinmsg.push({name: `${prefix}request`, value: `Search or Give a URL and add it to playlist.`, inline: true})
@@ -150,7 +149,7 @@ exports.join = function (msg, suffix, bot) {
                 msg.reply('That is not a valid voice channel.')
             } else {
                 channel.join().then((vc) => {
-                    let prefix = Config.prefix
+                    let prefix = global.config.prefix
                     require('./db').check('prefix', {
                         main: msg.guild.id
                     }).then((r) => {
@@ -161,7 +160,7 @@ exports.join = function (msg, suffix, bot) {
                                 msg.channel.sendMessage(':warning: You had an instance last time, sorry for the unexpected leave.')
                             }
                         })
-                        if (r !== false) prefix = r.value || Config.prefix
+                        if (r !== false) prefix = r.value || global.config.prefix
                         let joinmsg = []
                         joinmsg.push({name: 'Hello!', value: `I joined ${vc.voiceConnection.channel.name}`})
                         joinmsg.push({name: `${prefix}request`, value: `Search or Give a URL and add it to playlist.`, inline: true})
@@ -501,7 +500,7 @@ exports.request = function (msg, suffix, bot) {
             /** @namespace api.playlistItems */
             api.authenticate({
                 type: 'key',
-                key: Config.google
+                key: global.config.google
             })
             api.playlistItems.list({
                 part: 'snippet',
@@ -554,7 +553,7 @@ function fetch(v, msg, stats) {
         }
         let options
         if (v.indexOf('youtu') > -1) {
-            options = ['--skip-download', '-f bestaudio/worstvideo', '--add-header', 'Authorization:' + Config.google]
+            options = ['--skip-download', '-f bestaudio/worstvideo', '--add-header', 'Authorization:' + global.config.google]
         } else {
             options = ['--skip-download', '-f bestaudio/worstvideo']
         }

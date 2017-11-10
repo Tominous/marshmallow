@@ -1,4 +1,3 @@
-let Config = require('../../../config.json')
 let Websocket = require('ws')
 let Bezerk
 
@@ -8,9 +7,9 @@ exports.begin = () => {
   let bot
 
   setTimeout(() => {
-      if (Config.bezerk.use === true) {
+      if (global.config.bezerk.use === true) {
           try {
-              Bezerk = new Websocket(Config.bezerk.uri)
+              Bezerk = new Websocket(global.config.bezerk.uri)
           } catch (e) {
               Logger('Whoops, couldn\'t connect to Websocket.')
           }

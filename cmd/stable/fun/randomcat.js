@@ -1,10 +1,9 @@
 let request = require('request')
 let fs = require('fs')
-let config = require('../../../config.json')
 
 exports.run = (c, suffix) => {
     let tags = suffix.replace(' ', '+')
-    request('https://api.tumblr.com/v2/tagged?tag=cat' + (suffix ? '+' + tags : '') + `&api_key=${config.tumblrAPI}`, (error, response, body) => {
+    request('https://api.tumblr.com/v2/tagged?tag=cat' + (suffix ? '+' + tags : '') + `&api_key=${global.config.tumblrAPI}`, (error, response, body) => {
         if (!error && response.statusCode === 200) {
             try {
                 JSON.parse(body)
