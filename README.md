@@ -1,6 +1,7 @@
 # Marshmallow Core
 
-## Installing Node
+## Installation
+### Installing Node
 You'll need to install [NodeJS 9.1.0](https://nodejs.org/en/) before anything.
 You can continue without worry with 8.1.0+, however some things (like AI) might fail.
 
@@ -12,7 +13,7 @@ $ node -v
 $ npm -v
 5.5.1
 ```
-## Installing Marshmallow Core
+### Installing Marshmallow Core
 Install `git` via [git-scm](https://git-scm.com/).
 If you're on MacOS, install via [homebrew](https://brew.sh/) or X Code.
 
@@ -30,7 +31,7 @@ $ cd ./marshmallow
 Clone the file `config.example.json` with the name `config.json`.
 Start configuring it accordingly.
 
-## Create Database
+### Create Database
 Create a folder named `database` at the root path of where Marshmallow is located.
 Then, create the following:
 
@@ -60,7 +61,8 @@ You'll have to train **your own model**. This requires a powerful CUDA compatibl
 
 If you don't have a CUDA compatible GPU, or no MacOS, feel free to contact [Radwolf](https://discord.gg/radwolf) on Discord.
 
-## Install Requirements
+## Installation
+### Install Requirements
 - Install [Tensorflow GPU](https://www.tensorflow.org/).
 - Install [Python 2.7.10](https://www.python.org/downloads/). **No higher, no lower.**
 - Install [Reddit's Publicly Avaliable Comment Research](https://www.reddit.com/r/datasets/comments/3bxlg7/i_have_every_publicly_available_reddit_comment/).
@@ -84,7 +86,7 @@ It's recommended that you play with `parser_config_standard.json` to attempt to 
 
 Verify that conversion completed with no errors by checking `data` for a directory named `xhavier`.
 
-## Begin Training
+### Begin Training
 Make sure everything is in place before training.
 
 **We are not responsible for possible damage to your system. What you do with training is up to you, and your fault.**
@@ -130,9 +132,9 @@ We're hoping that you have basic knowledge of Neural Networks **and** Machine Le
 
 Everything should be setup well enough for a GTX Titan **and** a 2017 Macbook Pro. No configuration is needed and you can just run `python train.py`.
 
-## Begin Training (old system)
+### Begin Training (old system)
 If your system is old and may not hold a lot of GPU Memory, adjust the hyperparameters accordingly. More or less, adjust the `batch_size`.
 
 # Thanks
-Andrej Karpathy [char-rnn](https://github.com/karpathy/char-rnn).
+Andrej Karpathy [char-rnn](https://github.com/karpathy/char-rnn).   
 Sherjil Ozair [Tensorflow Port](https://github.com/sherjilozair/char-rnn-tensorflow).
