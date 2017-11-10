@@ -13,7 +13,7 @@ let cpu
 let query = 0
 let querypersec = 0
 
-let masters = ['96876194712018944','161014852368859137']
+let masters = global.config.masters
 
 setInterval(() => {
     mem.stat(process.pid, (e, s) => {

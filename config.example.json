@@ -21,6 +21,7 @@
     "uri": "http://localhost:1337",
     "port": "1337"
   },
+  "masters": [],
   "patreon": {},
   "beta": {}
 }
