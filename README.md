@@ -2,7 +2,7 @@
 
 ## Installing Node
 You'll need to install [NodeJS 9.1.0](https://nodejs.org/en/) before anything.
-You can continue without worry with 8.1.0+, however some things (like AI) might fail. 
+You can continue without worry with 8.1.0+, however some things (like AI) might fail.
 
 After that, verify installation:
 ```
@@ -29,6 +29,15 @@ $ cd ./marshmallow
 
 Clone the file `config.example.json` with the name `config.json`.
 Start configuring it accordingly.
+
+## Create Database
+Create a folder named `database` at the root path of where Marshmallow is located.
+Then, create the following:
+
+`core`
+`0`
+
+If you are planning to shard, create database directories accordingly.
 
 Now you can run the basics of Marshmallow.
 ```
