@@ -1,0 +1,26 @@
+{
+  "prefix": "]",
+  "token": "https://discordapp.com/developers",
+  "google": "https://console.cloud.google.com/",
+  "discordpwkey": false,
+  "carbonkey": false,
+  "tumblrAPI": "woah",
+  "oauthURL": "discord-oauth-url-for-invite",
+  "twitch": {
+    "username": "heck",
+    "password": "oauth:just-google-it-not-hard-to-find"
+  },
+  "domain": "https://custom.domain",
+  "helpDomain": "https://github.com/radwolfdev/marshmallow",
+  "clientID": "https://discordapp.com/developers",
+  "clientSecret": "https://discordapp.com/developers",
+  "callbackURL": "/auth/discord/callback",
+  "bezerk": {
+    "how": "check wildbeast for info",
+    "use": false,
+    "uri": "http://localhost:1337",
+    "port": "1337"
+  },
+  "patreon": {},
+  "beta": {}
+}
