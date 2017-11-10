@@ -16,7 +16,7 @@
   "clientSecret": "https://discordapp.com/developers",
   "callbackURL": "/auth/discord/callback",
   "bezerk": {
-    "how": "check wildbeast for info",
+    "how": "https://bezerk.dougley.com/",
     "use": false,
     "uri": "http://localhost:1337",
     "port": "1337"
