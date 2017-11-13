@@ -1,5 +1,15 @@
 let fs = require('fs')
 
+let PY = require('python-shell')
+let nnBot = new PY(`neural/chatbot.py`, {
+    args: ['--save_dir', 'neural/models/xhavier'],
+    mode: 'text'
+})
+
+nnBot.on('message', (d) => {
+    global.debug.check('boom')
+})
+
 // M-HK
 global.hk = require('./hk')
 
@@ -116,15 +126,7 @@ global.ranCommand = () => {
 global.db = require('../req/db')
 global.debug.check('mod.js Loaded')
 
-let PY = require('python-shell')
-let nnBot = new PY(`${__dirname}/neural/chatbot.py`, {
-    mode: 'text'
-})
 nnBot.send('\n')
-
-nnBot.on('message', (d) => {
-    global.debug.check('boom')
-})
 
 global.smarts = {
     write: (m) => {
@@ -132,16 +134,16 @@ global.smarts = {
             let msg
 
             global.debug.check('[ACCESS] Neural Network')
-            nnBot.send('test')
-            nnBot.on('message', (d) => {
+            nnBot.send(m)
+            let tmpListen = nnBot.on('message', (d) => {
                 global.debug.check(d)
-                if (!d.startsWith('>')) {
-                    msg = d
+                if (d.startsWith('>  ')) {
+                    msg = d.replace('>  ', '')
                 }
             })
 
             setTimeout(() => {
-                nnBot.end()
+                tmpListen = null
                 s(msg)
             }, 2000)
         })
