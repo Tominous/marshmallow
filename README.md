@@ -6,3 +6,16 @@ If you want to install this bot, go to our [wiki](https://github.com/radwolfdev/
 
 If you like our work, support us on [Patreon](https://www.patreon.com/rekkisomo)!  
 (Be sure to tell us that you pledged, otherwise we won't know)
+
+## Quick Install
+You'll still need to configure it yourself, which is described in our wiki.
+
+```
+git clone https://github.com/radwolfdev/marshmallow.git
+cd ./marshmallow
+npm i
+mv config.example.json config.json
+move config.example.json config.json
+```
+
+Don't report an issue if `mv` or `move` fails.
