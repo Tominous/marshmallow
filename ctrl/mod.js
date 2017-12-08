@@ -75,14 +75,14 @@ global.debug = {
 
 try {
   global.config.language = require(`../lang/${global.config.lang}.translation.json`)
-} catch () {
+} catch (e) {
   // Because EN_AU should always exist, right?
   global.debug.check(`Translation File "${global.config.lang}.translation.json" does not exist. Using "EN_AU.translation.json"`)
 
   // Excuse me while I vomit
   try {
     global.config.language = require('../lang/EN_AU.translation.json')
-  } catch () {
+  } catch (e) {
     global.debug.check('What, you expect me to speak in 1\'s and 0\'s?')
     global.debug.check('No translation file was found. Please read the instructions.')
     global.debug.check('And I swear to god, if you\'re about to create a god damn issue on the git you gonna get an ass spanking.')
