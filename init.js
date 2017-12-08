@@ -2,11 +2,6 @@
 
 // Best not to touch this, i'm being serious.
 
-let argv = {
-    max: 1,
-    maxLoop: 1
-}
-
 process.env.DEBUG = /**/ "check,nn,listen,error,command,dbg,init"
 //**/DEBUG="*"
 
@@ -21,6 +16,10 @@ let Logger = (d) => { let log = require('debug')('bezerk'); log(`[CORE:BEZERK] $
 let info = (d) => { let log = require('debug')('init'); log(`[CORE:INFO] ${d}`) }
 let Config = require('./config.json')
 let path = require('path')
+let argv = {
+    max: Config.sharding.max,
+    maxLoop: Config.sharding.maxLoop // Cuz sometimes the loop hates you.
+}
 
 info('Hello.')
 

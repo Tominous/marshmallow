@@ -11,7 +11,7 @@ exports.begin = () => {
                 guilds: global.bot.Guilds.length,
                 shard: global.argv.shardid
             })
-            global.bot.User.setGame(`poop`)
+            global.bot.User.setGame(global.config.language.playingStatus)
             for (let i = 0; i < func.core.length; i++) {
                 if (func.core[i].meta) {
                     for (let event in func.core[i]) {
