@@ -1,5 +1,10 @@
 {
   "prefix": "]",
+  "sharding": {
+    "max": 10,
+    "maxLoop": 10
+  },
+  "language": "EN_AU",
   "token": "https://discordapp.com/developers",
   "google": "https://console.cloud.google.com/",
   "discordpwkey": false,

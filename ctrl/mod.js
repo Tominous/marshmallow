@@ -74,10 +74,10 @@ global.debug = {
 }
 
 try {
-  global.config.language = require(`../lang/${global.config.lang}.translation.json`)
+  global.config.language = require(`../lang/${global.config.language}.translation.json`)
 } catch (e) {
   // Because EN_AU should always exist, right?
-  global.debug.check(`Translation File "${global.config.lang}.translation.json" does not exist. Using "EN_AU.translation.json"`)
+  global.debug.check(`Translation File "${global.config.language}.translation.json" does not exist. Using "EN_AU.translation.json"`)
 
   // Excuse me while I vomit
   try {
