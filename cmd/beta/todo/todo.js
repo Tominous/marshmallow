@@ -17,10 +17,10 @@ console.log('*burp*')
             console.log('cool.')
             c.message.channel.sendMessage('', null, {
               title: 'You completed everything!',
-              description: 'If you need something to do, Why not give Marshmallow some [New Commands](https://git.rdofm.net/curtis/help-me-daddy/wikis/developers/welcome-to-m5)?',
+              description: `If you need something to do, Why not give Marshmallow some [New Commands](${global.config.helpDomain})?`,
               color: colour,
               image: {
-                url: `https://rdofm.net/m/req/img/done.png?t=1`,
+                url: global.config.language.todo.done,
                 width: 217,
                 height: 217
               }
@@ -47,7 +47,7 @@ console.log('*burp*')
               fields: field,
               color: colour,
               image: {
-                url: `https://rdofm.net/m/req/img/start.png?t=1`,
+                url: global.config.language.todo.start,
                 width: 217,
                 height: 217
               }
@@ -77,10 +77,10 @@ console.log('*burp*')
             }, true).then(v => {
               c.message.channel.sendMessage('', null, {
                 title: 'I\'ve added that :smile:',
-                footer: {text: 'Hint: Try to complete this in less than 14 days and earn something special :wink:'},
+                footer: {text: 'Maybe actually complete it.'},
                 color: colour,
                 image: {
-                  url: `https://rdofm.net/m/req/img/add.png?t=1`,
+                  url: global.config.language.todo.done.add,
                   width: 217,
                   height: 217
                 }
@@ -112,7 +112,7 @@ console.log('*burp*')
                 footer: {text: 'Hint: Actually completing it could get you somewhere.'},
                 color: colour,
                 image: {
-                  url: `https://rdofm.net/m/req/img/add.png?t=1`,
+                  url: global.config.language.todo.add,
                   width: 217,
                   height: 217
                 }

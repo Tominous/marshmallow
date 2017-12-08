@@ -13,10 +13,10 @@ exports.run = (c, suffix) => {
           if(!v.value) {
             c.message.channel.sendMessage('', null, {
               title: 'Guild Pipeline Empty.',
-              description: 'Learn how to create one over [here](https://git.rdofm.net/curtis/help-me-daddy/wikis/housekeep/home)',
+              description: `Learn how to create one over [here](${global.config.helpDomain})`,
               color: colour,
               image: {
-                url: `https://rdofm.net/m/req/img/cron/pipe_none.png?t=1`
+                url: global.config.language.cron.none
               }
             })
           }

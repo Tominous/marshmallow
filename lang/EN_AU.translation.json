@@ -2,5 +2,15 @@
   "playingStatus": "もしもし。I'm a default placeholder line.",
   "music": {
     "disabled": "!! :x: Music is disabled. Check out https://discord.gg/radwolf for some handy dandy info."
+  },
+  "todo": {
+    "done": "https://raw.githubusercontent.com/radwolfdev/marshmallow/master/req/img/done.png",
+    "start": "https://github.com/radwolfdev/marshmallow/blob/master/req/img/start.png?raw=true",
+    "add": "https://raw.githubusercontent.com/radwolfdev/marshmallow/master/req/img/add.png"
+  },
+  "cron": {
+    "none": "https://github.com/radwolfdev/marshmallow/blob/master/req/img/cron/pipe_none.png?raw=true",
+    "pipe": "https://github.com/radwolfdev/marshmallow/blob/master/req/img/cron/pipe.png?raw=true",
+    "fail": "https://github.com/radwolfdev/marshmallow/blob/master/req/img/cron/pipe_fail.png?raw=true"
   }
 }

@@ -29,7 +29,7 @@ exports.unregisterVanity = function (msg) {
 }
 
 exports.join = function (msg, suffix, bot) {
-  if(global.config.translation.music.disabled.startsWith('!! ') return msg.channel.sendMessage(global.config.translation.music.disabled.replace('!! ', ''))
+  if(global.config.translation.music.disabled.startsWith('!! ')) return msg.channel.sendMessage(global.config.translation.music.disabled.replace('!! ', ''))
     let isReserved = false
     require('./db').check('music', {main: msg.guild.id}).then(thing => {
         if (thing.value) {

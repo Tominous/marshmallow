@@ -18,7 +18,7 @@ module.exports = {
     t.channel.sendMessage('', false, {
       title: `Initialising Cronjob ${t.name}`,
       image: {
-        url: 'https://rdofm.net/m/req/img/cron/pipe.png?t=1'
+        url: global.config.language.cron.pipe
       }
     }).then(m => {t.message=m})
 
@@ -57,7 +57,7 @@ module.exports = {
       t.message.edit('', {
         title: `Testing Cronjob ${t.name}`,
         image: {
-          url: 'https://rdofm.net/m/req/img/cron/pipe.png?t=1'
+          url: global.config.language.cron.pipe
         }
       })
 
@@ -68,7 +68,7 @@ module.exports = {
           title: `Cronjob ${t.name} Killed.`,
           description: 'Please report this to [RDO](https://discord.gg/radwolf)',
           image: {
-            url: 'https://rdofm.net/m/req/img/cron/pipe_fail.png?t=1'
+            url: global.config.language.cron.fail
           }
         })
       }
@@ -76,7 +76,7 @@ module.exports = {
       t.message.edit('', {
         title: `Cronjob ${t.guid} Passed.`,
         image: {
-          url: 'https://rdofm.net/m/req/img/cron/pipe_none.png?t=1'
+          url: global.config.language.cron.none
         }
       })
 
@@ -105,7 +105,7 @@ module.exports = {
           title: `Cronjob ${t.name} Killed.`,
           description: `An error will appear in <#${s.message.channel.id}>`,
           image: {
-            url: 'https://rdofm.net/m/req/img/cron/pipe_fail.png?t=1'
+            url: global.config.language.cron.fail
           }
         })
 
@@ -132,7 +132,7 @@ module.exports = {
                 title: `Running Cronjob purge30`,
                 desc: a['purge30'].desc,
                 image: {
-                  url: 'https://rdofm.net/m/req/img/cron/pipe.png?t=1'
+                  url: global.config.language.cron.pipe
                 }
               }).then(m => {
                 a['purge30'].js(b['logbook'])
