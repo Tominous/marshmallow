@@ -1,5 +1,5 @@
 exports.run = (c) => {
-    c.message.channel.sendMessage(`
+	c.message.channel.sendMessage(`
 Hello!
 
 Help can be found at <${global.config.helpDomain}>
