@@ -2,12 +2,12 @@ let fs = require('fs')
 
 let PY = require('python-shell')
 let nnBot = new PY(`neural/chatbot.py`, {
-	args: ['--save_dir', 'neural/models/xhavier'],
-	mode: 'text'
+  args: ['--save_dir', 'neural/models/xhavier'],
+  mode: 'text'
 })
 
 nnBot.on('message', (d) => {
-	global.debug.check('boom')
+  global.debug.check('boom')
 })
 
 // M-HK
@@ -16,15 +16,15 @@ global.hk = require('./hk')
 global.Discordie = require('discordie')
 global.argv = require('minimist')(process.argv.slice(2))
 if (global.argv.max === 1) {
-	global.bot = new global.Discordie({
-		autoReconnect: true
-	})
+  global.bot = new global.Discordie({
+    autoReconnect: true
+  })
 } else {
-	global.bot = new global.Discordie({
-		autoReconnect: true,
-		shardId: global.argv.shardid,
-		shardCount: global.argv.max
-	})
+  global.bot = new global.Discordie({
+    autoReconnect: true,
+    shardId: global.argv.shardid,
+    shardCount: global.argv.max
+  })
 }
 
 global.dbg = require('debug')
@@ -39,105 +39,105 @@ global.restarts = 0
 global.totalCommands = 0
 
 global.debug = {
-	check: (d) => {
-		let log = require('debug')('check')
-		log(`[SHARD ${global.argv.shardid}:CHECK] ${d}`)
-		global.dogbox.increment('bot.activity')
-	},
-	listen: (d) => {
-		let log = require('debug')('listen')
-		log(`[SHARD ${global.argv.shardid}:LISTEN] ${d}`)
-		global.dogbox.increment('bot.activity')
-	},
-	error: (d) => global.elog(d),
-	cmd: (d) => {
-		let log = require('debug')('cmd')
-		log(`[SHARD ${global.argv.shardid}:CMD] ${d}`)
-		global.dogbox.increment('bot.activity')
-	},
-	db: (d) => {
-		let log = require('debug')('db')
-		log(`[SHARD ${global.argv.shardid}:DB] ${d}`)
-		global.dogbox.increment('bot.activity')
-	},
-	dbg: global.dbg,
-	voice: (d) => {
-		let log = require('debug')('voice')
-		log(`[SHARD ${global.argv.shardid}:VOICE] ${d}`)
-		global.dogbox.increment('bot.activity')
-	},
-	nn: (d) => {
-		let log = require('debug')('nn')
-		log(`[SHARD ${global.argv.shardid}:NEURAL_NETWORK] ${d}`)
-		global.dogbox.increment('bot.activity')
-	}
+  check: (d) => {
+    let log = require('debug')('check')
+    log(`[SHARD ${global.argv.shardid}:CHECK] ${d}`)
+    global.dogbox.increment('bot.activity')
+  },
+  listen: (d) => {
+    let log = require('debug')('listen')
+    log(`[SHARD ${global.argv.shardid}:LISTEN] ${d}`)
+    global.dogbox.increment('bot.activity')
+  },
+  error: (d) => global.elog(d),
+  cmd: (d) => {
+    let log = require('debug')('cmd')
+    log(`[SHARD ${global.argv.shardid}:CMD] ${d}`)
+    global.dogbox.increment('bot.activity')
+  },
+  db: (d) => {
+    let log = require('debug')('db')
+    log(`[SHARD ${global.argv.shardid}:DB] ${d}`)
+    global.dogbox.increment('bot.activity')
+  },
+  dbg: global.dbg,
+  voice: (d) => {
+    let log = require('debug')('voice')
+    log(`[SHARD ${global.argv.shardid}:VOICE] ${d}`)
+    global.dogbox.increment('bot.activity')
+  },
+  nn: (d) => {
+    let log = require('debug')('nn')
+    log(`[SHARD ${global.argv.shardid}:NEURAL_NETWORK] ${d}`)
+    global.dogbox.increment('bot.activity')
+  }
 }
 
 try {
-	global.config.language = require(`../lang/${global.config.language}.translation.json`)
+  global.config.language = require(`../lang/${global.config.language}.translation.json`)
 } catch (e) {
-	// Because EN_AU should always exist, right?
-	global.debug.check(`Translation File "${global.config.language}.translation.json" does not exist. Using "EN_AU.translation.json"`)
+  // Because EN_AU should always exist, right?
+  global.debug.check(`Translation File "${global.config.language}.translation.json" does not exist. Using "EN_AU.translation.json"`)
 
-	// Excuse me while I vomit
-	try {
-		global.config.language = require('../lang/EN_AU.translation.json')
-	} catch (e) {
-		global.debug.check('What, you expect me to speak in 1\'s and 0\'s?')
-		global.debug.check('No translation file was found. Please read the instructions.')
-		global.debug.check('And I swear to god, if you\'re about to create a god damn issue on the git you gonna get an ass spanking.')
-		process.exit()
-	}
+  // Excuse me while I vomit
+  try {
+    global.config.language = require('../lang/EN_AU.translation.json')
+  } catch (e) {
+    global.debug.check('What, you expect me to speak in 1\'s and 0\'s?')
+    global.debug.check('No translation file was found. Please read the instructions.')
+    global.debug.check('And I swear to god, if you\'re about to create a god damn issue on the git you gonna get an ass spanking.')
+    process.exit()
+  }
 }
 
 global.componentToHex = (c) => {
-	let hex = c.toString(16)
-	return hex.length === 1 ? "0" + hex : hex
+  let hex = c.toString(16)
+  return hex.length === 1 ? "0" + hex : hex
 }
 
 global.convertToHex = (r, g, b) => {
-	let c = global.componentToHex(r) + global.componentToHex(g) + global.componentToHex(b)
-	c = c.toString(16)
-	return parseInt(c, 16)
+  let c = global.componentToHex(r) + global.componentToHex(g) + global.componentToHex(b)
+  c = c.toString(16)
+  return parseInt(c, 16)
 }
 
 global.s4 = () => {
-	return Math.floor((1 + Math.random()) * 0x10000)
-		.toString(16)
-		.substring(1)
+  return Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1)
 }
 
 global.guid = () => {
-	return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-		s4() + '-' + s4() + s4() + s4()
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4()
 }
 
 global.saveFunctions = (version, inner) => {
-	/**
-	 * Function Object
-	 *
-	 * @class inner
-	 * @type {object}
-	 * @example {ping:{run:function}}
-	 */
-	global.saved[version] = []
-	for (let key in inner) {
-		if (inner.hasOwnProperty(key)) {
-			global.saved[version].push(inner[key])
-		}
-	}
+  /**
+   * Function Object
+   *
+   * @class inner
+   * @type {object}
+   * @example {ping:{run:function}}
+   */
+  global.saved[version] = []
+  for (let key in inner) {
+    if (inner.hasOwnProperty(key)) {
+      global.saved[version].push(inner[key])
+    }
+  }
 }
 
 setTimeout(() => {
-	global.restarts++
-		global.bot.connect({
-			token: global.config.token
-		})
+  global.restarts++
+    global.bot.connect({
+      token: global.config.token
+    })
 }, 5000)
 
 global.ranCommand = () => {
-	global.dogbox.increment('bot.commands')
-	global.totalCommands++
+  global.dogbox.increment('bot.commands')
+  global.totalCommands++
 }
 
 global.db = require('../req/db')
@@ -146,23 +146,23 @@ global.debug.check('mod.js Loaded')
 nnBot.send('\n')
 
 global.smarts = {
-	write: (m) => {
-		return new Promise(function (s) {
-			let msg
+  write: (m) => {
+    return new Promise(function (s) {
+      let msg
 
-			global.debug.check('[ACCESS] Neural Network')
-			nnBot.send(m)
-			let tmpListen = nnBot.on('message', (d) => {
-				global.debug.check(d)
-				if (d.startsWith('>  ')) {
-					msg = d.replace('>  ', '')
-				}
-			})
+      global.debug.check('[ACCESS] Neural Network')
+      nnBot.send(m)
+      let tmpListen = nnBot.on('message', (d) => {
+        global.debug.check(d)
+        if (d.startsWith('>  ')) {
+          msg = d.replace('>  ', '')
+        }
+      })
 
-			setTimeout(() => {
-				tmpListen = null
-				s(msg)
-			}, 2000)
-		})
-	}
+      setTimeout(() => {
+        tmpListen = null
+        s(msg)
+      }, 2000)
+    })
+  }
 }
