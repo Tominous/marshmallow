@@ -1,4 +1,4 @@
-# Marshmallow Core
+# Marshmallow 6 Bandicoot
 
 Marshmallow is a *m o d u l a r* Discord Bot that's sloppy coded. That's why it's Open Source, so you can help make it better!
 
